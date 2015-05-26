@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\begin{document}
+
+\input{./title_page.tex}
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+\newpage
+\section{Revision History}
+\begin{table}[h]
+\begin{tabular}{llll}
+\textbf{Date}          & \textbf{Description}  & \textbf{Author}       & \textbf{Comments}   \\ \hline
+\multicolumn{1}{|R{2.5cm}|}{26/05/2015} & \multicolumn{1}{L{5.5cm}|}{Document Creation} & \multicolumn{1}{l|}{Team Eclectic} & \multicolumn{1}{L{4cm}|}{Version 1} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Document Approval}
+\begin{table}[h]
+\begin{tabular}{llll}
+\textbf{Signature}     & \textbf{Printed Name} & \textbf{Title}        & \textbf{Comments}     \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{L{4.5cm}|}{} & \multicolumn{1}{L{4cm}|}{} & \multicolumn{1}{L{4cm}|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+\section{Introduction}
+\subsection{Purpose}
+\subsection{Scope}
+\subsection{Definitions, Acronyms \& Abbreviations}
+%\subsection{References}
+\subsection{Overview}
+
+\section{Specific Requirements}
+%\subsection{External Interface Requirements}
+%\subsubsection{User Interfaces}
+%\subsubsection{Hardware Interfaces}
+%\subsubsection{Software Interfaces}
+%\subsubsection{Communication Interfaces}
+
+\subsection{Functional Requirements}
+\subsubsection{Group Chat Creation (critical)}
+\subsubsection{Group Chat Deletion (critical)}
+\subsubsection{Group Chat Updating (critical)}
+\subsubsection{Adding Members (critical)}
+\subsubsection{Removing Members (critical)}
+\subsubsection{Sending Messages (critical)}
+\subsubsection{Sending Voice Recordings (Important)}
+%\subsection{Non-Functional Requirements}
+
+%\section{Requirements Traceability Matrix}
+
+\end{document}

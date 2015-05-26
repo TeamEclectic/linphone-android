@@ -38,3 +38,8 @@ tests/*$py.class
 tests/build.xml
 tests/project.properties
 ant_password.properties
+Project Documentation/SRD/software_requirements_specification.aux
+Project Documentation/SRD/software_requirements_specification.log
+Project Documentation/SRD/software_requirements_specification.pdf
+Project Documentation/SRD/software_requirements_specification.synctex.gz
+Project Documentation/SRD/software_requirements_specification.toc
