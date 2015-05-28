@@ -313,25 +313,25 @@ Users will be removed at different times to other users therefore it must be gua
 \paragraph{Requirements:}
 Once the administrator opts to remove a user from the list of users currently in the group, the user selected must be removed from the group and should no longer receive any messages from the group.
 \paragraph{References:} UC \ref{UC-remove-member}
-\subsubsection{Send Message} \label{FR-send-message}
-\paragraph{Summary:}
-\paragraph{Rationale:}
-\paragraph{Requirements:}
+\subsubsection{Encryption for Send Message} \label{FR-send-message-encrypted}
+\paragraph{Summary:} The send message feature shall provide for encryption.
+\paragraph{Rationale:} If the group administrator decides that messages should be encrypted for secure communication amongst members, the ability to do so shall be provided.
+\paragraph{Requirements:} When encryption is enabled, the send message feature shall use the AES265 encryption algorithm to encrypt the message before broadcasting it to the group members. If encryption is not enabled, the message will be broadcast in it's original state.
 \paragraph{References:} UC \ref{UC-send-message}
-\subsubsection{Send Voice Recording} \label{FR-send-voice}
-\paragraph{Summary:}
-\paragraph{Rationale:}
-\paragraph{Requirements:}
+\subsubsection{Voice Recording Support} \label{FR-voice-record-support}
+\paragraph{Summary:} The voice recording feature shall check that the device has a microphone.
+\paragraph{Rationale:} The voice recording feature can only operate if it can receive audio input from the device's microphone. Without such a check, trying to access the feature can lead to the possibility of a system crash.
+\paragraph{Requirements:} When the voice recording feature is invoked, the procedure will check that the device can record audio. If it can, it will proceed with normal execution: using the device microphone to record the audio and once done, wrap the audio file in a message object and send it; else it will abort the process and alert the user that the feature is not available.
 \paragraph{References:} UC \ref{UC-send-voice}
 
 \subsection{Non-Functional Requirements}
-%example
-\subsubsection{Performance constraints for Add User} \label{NF-performance-add-user}
-\paragraph{Summary:}
-\paragraph{Rationale:}
-\paragraph{Requirements:}
-\paragraph{References:} FR \ref{FR-add-member}, UC \ref{UC-add-member}
+\subsubsection{Scalability Constraints for Add User} \label{NF-performance-add-member}
+\paragraph{Summary:} Adding a new user may not negatively impact the performance of management of, and communication within, the group.
+\paragraph{Rationale:} If there are too many members in a group, it can become hard for the group administrator to keep track of members and there may be noticeable delays in message broadcasting with some users receiving messages much later than others. This can impact the service quality negatively cause people to stop using the service.
+\paragraph{Requirements:} The number of users per group shall be limited to a reasonable size to prevent poor performance. This number should be between 50 and 100 users, although this number is subject to change as development and testing progress.
+\paragraph{References:} UC \ref{UC-add-member}
 
+\subsubsection{Performance Constraints for Send Message}
 
 %\section{Requirements Traceability Matrix}
 
