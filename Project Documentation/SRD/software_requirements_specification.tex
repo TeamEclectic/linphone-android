@@ -171,8 +171,8 @@ The group will not be created if one of the following scenarios occurs:
 
 \subsubsection{Delete Group Chat} \label{UC-delete-group}
 \paragraph{Priority:}Critical
-\paragraph{Summary:}
-\paragraph{Rationale:}
+\paragraph{Summary:}A user can leave a group chat. When all the users leave a group chat, it will be deleted. If only one person remains in a group chat, that person will be unable to send messages to the chat until at least one other person is added to the chat. If the group owner leaves the group, a new owner is automatically assigned.
+\paragraph{Rationale:}When an owner of a group leaves the group, the administrative privileges need to be reallocated. The group chat should persist as long as there is at least one user in the group. In the case of only one user remaining, preventing that user from sending messages will guard against misuse of the group chat, as well acting as an alert that the user's message would not have been seen by any other users.
 \paragraph{Users:}
 \paragraph{Preconditions:}
 \paragraph{{Postconditions:}}
