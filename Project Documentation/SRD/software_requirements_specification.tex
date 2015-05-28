@@ -44,12 +44,6 @@
 \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
 \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
 \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -57,11 +51,11 @@
 \section{Introduction}
 
 \subsection{Purpose}
-This document provides a detailed discussion of the Linphone Group Chat Extension system requirements and behaviour, in preparation for design and implementation. These requirements include use cases, functional and non-functional requirements as well as a description of the adjustments to be made to the existing user interfaces.
+The purpose of this document is to provide a detailed discussion of the Linphone Group Chat Extension system requirements and behaviour, in preparation for design and implementation. These requirements include use cases, functional and non-functional requirements as well as a description of the adjustments to be made to the existing user interfaces.
 \subsection{Scope}
 %The scope of this documentation is to cover all use cases and functional requirements that are necessary to provide group chat functionality to the Linphone service. \newline
 %The scope of ManageGroups is restricted to creating, deleting and removing groups. These are further split up into lower-level use cases that are needed in order to achieve the desired functionality.
-The scope of the Linphone Group Chat Extension is as follows:
+The scope of this document will cover the requirements of the features for the Linphone Group Chat Extension project, which are listed as follows:
 \begin{itemize}
 \item providing group chat capabilities such as:
 \subitem  - creation and deletion of groups,
@@ -85,8 +79,9 @@ The scope of the Linphone Group Chat Extension is as follows:
 \end{figure}
 \subsection{Definitions, Acronyms \& Abbreviations}
 \subsubsection{Internal Documentation}
-\paragraph{FR:} Functional Requirement
-\paragraph{UC:} Use Case
+\paragraph{FR:} Stands for Functional Requirement. Functional requirements define the internal workings of the software to show how the use cases are satisfied.
+\paragraph{NFR:} Stands for Non-functional Requirement. Non-functional requirements impose constraints on the design or implementation of the software.
+\paragraph{UC:} Stands for Use Case. Use Cases describe the external behaviour of the software when a user interacts with it.
 \subsubsection{External Documentation}
 \paragraph{AES256:} AES stands for Advanced Encryption Standard and is a specification for encryption of electronic data. AES256 is a specific encryption algorithm that uses block sizes of 256 bits.
 %\subsection{References}
@@ -289,6 +284,7 @@ The post-conditions specify the conditions which must hold true when the service
 \paragraph{Rationale:}
 \paragraph{Requirements:}
 \paragraph{References:} UC \ref{UC-delete-group}
+
 \subsubsection{Update Group Profile Picture} \label{FR-update-group-picture}
 \paragraph{Summary:}
 Updating should allow a user to remove the profile picture from the group or choose an image from local storage to replace the current profile picture.
@@ -297,6 +293,7 @@ A user will often change the profile picture of the group, allowing the user to 
 \paragraph{Requirements:}
 When the user chooses to change the profile picture, the user must be afforded the option to remove the profile picture (replacing it with a default system image) or allow the user to choose a new picture by invoking the file manager in order to choose a picture from local storage. The updated profile picture should be visible to all users within the group after the change has taken place.
 \paragraph{References:} UC \ref{UC-update-group}
+
 \subsubsection{Add Member} \label{FR-add-member}
 \paragraph{Summary:}
 Once the user has been added to the group, the user must be able to receive messages from the group and other members.
@@ -305,6 +302,7 @@ Users will be added at different times to other users therefore it must be guara
 \paragraph{Requirements:}
 Once the administrator opts to add a user, the list of contacts the user currently has must appear and the user can choose another user to add to the group. When the user is selected, that user must be added to the group list and receive all messages sent in the group from that point.
 \paragraph{References:} UC \ref{UC-add-member}
+
 \subsubsection{Remove Member} \label{FR-remove-member}
 \paragraph{Summary:}
 Once the user has been removed from the group, the user must not receive any messages from the group.
@@ -313,11 +311,19 @@ Users will be removed at different times to other users therefore it must be gua
 \paragraph{Requirements:}
 Once the administrator opts to remove a user from the list of users currently in the group, the user selected must be removed from the group and should no longer receive any messages from the group.
 \paragraph{References:} UC \ref{UC-remove-member}
+
 \subsubsection{Encryption for Send Message} \label{FR-send-message-encrypted}
 \paragraph{Summary:} The send message feature shall provide for encryption.
 \paragraph{Rationale:} If the group administrator decides that messages should be encrypted for secure communication amongst members, the ability to do so shall be provided.
 \paragraph{Requirements:} When encryption is enabled, the send message feature shall use the AES265 encryption algorithm to encrypt the message before broadcasting it to the group members. If encryption is not enabled, the message will be broadcast in it's original state.
 \paragraph{References:} UC \ref{UC-send-message}
+
+\subsubsection{Sent Message Indication} \label{FR-send-message-indicator}
+\paragraph{Summary:} The send message feature shall provide indication of a successful broadcast or the failure thereof.
+\paragraph{Rationale:} Users need to know whether or not their messages have been sent else they must assume one or the other, and that is not reliable. If some indication is given of the success of sending a message, a user will be able to take any necessary action in the event of a failure.
+\paragraph{Requirements:} When a user invokes the send message feature, the feature will provide an indication of the success after completing it's execution.
+\paragraph{References:} UC \ref{UC-send-message}
+
 \subsubsection{Voice Recording Support} \label{FR-voice-record-support}
 \paragraph{Summary:} The voice recording feature shall check that the device has a microphone.
 \paragraph{Rationale:} The voice recording feature can only operate if it can receive audio input from the device's microphone. Without such a check, trying to access the feature can lead to the possibility of a system crash.
@@ -325,13 +331,24 @@ Once the administrator opts to remove a user from the list of users currently in
 \paragraph{References:} UC \ref{UC-send-voice}
 
 \subsection{Non-Functional Requirements}
-\subsubsection{Scalability Constraints for Add User} \label{NF-performance-add-member}
+
+\subsubsection{Scalability Constraints for Add User} \label{NFR-scalability-add-member}
 \paragraph{Summary:} Adding a new user may not negatively impact the performance of management of, and communication within, the group.
 \paragraph{Rationale:} If there are too many members in a group, it can become hard for the group administrator to keep track of members and there may be noticeable delays in message broadcasting with some users receiving messages much later than others. This can impact the service quality negatively cause people to stop using the service.
 \paragraph{Requirements:} The number of users per group shall be limited to a reasonable size to prevent poor performance. This number should be between 50 and 100 users, although this number is subject to change as development and testing progress.
 \paragraph{References:} UC \ref{UC-add-member}
 
-\subsubsection{Performance Constraints for Send Message}
+\subsubsection{Performance Constraints for Send Message} \label{NFR-performance-send-message}
+\paragraph{Summary:} Sending messages should be quick.
+\paragraph{Rationale:} Broadcasting messages to the entire group should be quick for effective communication to take place. If broadcasting a message to the group is slow, the quality of the real-time communication experience becomes poor and may cause users to avoid the use of the service. 
+\paragraph{Requirements:} Messages should be sent to all group members within reasonable time, but as fast as possible. The time within which the message should be received should be about 5 seconds. However, factors to take into account may include user availability (the user may be off-line) and network congestion and/or connection issues. Refer to NFR \ref{NFR-reliability-send-message} for details on reliability of Send Message.
+\paragraph{References:} UC \ref{UC-send-message}
+
+\subsubsection{Reliability Constraints for Send Message} \label{NFR-reliability-send-message}
+\paragraph{Summary:} The send message feature should be reliable, indicating failed or successful message broadcasts.
+\paragraph{Rationale:} Users should be notified if their message was sent or not, allowing them to take the necessary action to complete their communication. If a user does not receive some form of confirmation of success or failure, the user will have to assume that the message was sent even if or when it was not, resulting in an unreliable service.
+\paragraph{Requirements:} The send message feature shall provide some indication of success after perform its tasks.
+\paragraph{References:} UC \ref{UC-send-message}, FR \ref{FR-send-message-indicator}
 
 %\section{Requirements Traceability Matrix}
 
