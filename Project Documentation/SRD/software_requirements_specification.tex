@@ -368,7 +368,7 @@ Once the administrator opts to remove a user from the list of users currently in
 \paragraph{Summary:} Decryption of received messages is required before display and further processing.
 \paragraph{Rationale:} Group administrators can enable encryption for all messages sent on the group. These messages are encrypted before being sent and should be decrypted after received.
 \paragraph{Requirements:} When encryption is enabled, the send message feature shall use the AES265 encryption algorithm to encrypt the message before broadcasting it to the group members. In this case, the AES265 algorithm will also be used to decrypt the message once received by members subscribed to the group, given that encryption for messages sent on the group is enabled.
-\paragraph{References:} UC \ref{UC-send-message}
+\paragraph{References:} UC \ref{UC-receive-message}
 
 \subsection{Non-Functional Requirements}
 
