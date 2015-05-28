@@ -180,6 +180,24 @@ The user selected receives administrator privileges while the current administra
 \item The user's message has been sent to all other participants.
 \end{itemize}
 %\includegraphics[]{name} -- for use case diagram
+
+\subsubsection{Receive Message} \label{UC-send-message}
+\paragraph{Priority:} Critical
+\paragraph{Summary:} A message object sent on a group is received by every member subscribed to a group.
+\paragraph{Rationale:} After a message has been broadcast to all members subscribed/linked to a group, each member should be able to receive the message upon receiving a broadcast request. This involves analysing and displaying the message using the appropriate interface. 
+\paragraph{Users:} Any registered member of the particular group on which a message is broadcast.
+\paragraph{Preconditions:} 
+\begin{itemize}
+\item A message object has been broadcast to all users subscribed to a particular group.
+\item The user receiving an incoming message should be subscribed to the group from which the message is broadcast.
+\end{itemize}
+\paragraph{{Postconditions:}}
+\begin{itemize}
+\item The message is analysed/parsed
+\item The message is displayed on the group chat interface
+\end{itemize}
+%\includegraphics[]{name} -- for use case diagram
+
 \subsubsection{Send Voice Recording} \label{UC-send-voice}
 \paragraph{Priority:} Important
 \paragraph{Summary:} A user will be able to record voice messages and send them via IM.
