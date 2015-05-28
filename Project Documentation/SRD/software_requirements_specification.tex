@@ -99,12 +99,76 @@ The scope of this document will cover the requirements of the features for the L
 \subsection{Use Cases}
 \subsubsection{Create Group Chat} \label{UC-create-group}
 \paragraph{Priority:}Critical
-\paragraph{Summary:}
-\paragraph{Rationale:}
-\paragraph{Users:}
-\paragraph{Preconditions:}
-\paragraph{{Postconditions:}}
-%\includegraphics[]{name} -- for use case diagram
+\paragraph{Summary:}The ManageGroups module provides services to create, update and remove or leave groups. The user can choose to create a group, specify its name, set a profile picture and add contacts.
+\paragraph{Rationale:} The main aspect of the extention to the Linphone project is to provide group chat functionality. This use case gives the user the abilit to creat the actual group and initialize the use of the group. The user can set the group name, add a group photo and choose contacts to add to the group.   
+\paragraph{Users:}  Any user of the Linphone application
+\paragraph{Preconditions:}For each of the pre-conditions below an exception is introduced which is raised by the service to notify the caller that the service is not being provided as the pre-condition associated with that exception has not been met.\newline
+The group will not be created if one of the following scenarios occurs:
+\begin{itemize}
+\item	User must have Linphone Service
+\item	No other group with the same name may exist
+\item	The user may not create the group unless there is at least one member/contact added.
+\end{itemize}
+
+\paragraph{{Postconditions:}}The post-conditions specify the conditions which must hold true when the service has been provided.
+\begin{itemize}
+\item	User is automatically assigned administrator rights
+\item	An invite is sent to users to ask them if they want to be part of the group
+\item	The group is created with the respective profiles and members
+\end{itemize}
+\textbf{Services Contract:}
+\begin{itemize}
+\item The CreateGroupRequest identifies the user that is creating the group and automatically assigns this user to be the administrator.
+\item It allows the user to select contacts that the user wishes to add to the group.
+\item The group members are then notified by receiving an invitation to join and are linked to the group.
+\item The service has three pre-conditions and three post-conditions
+\end{itemize}
+\includegraphics[width=380px]{./images/serviceContract-create.jpg} \newline
+
+\textbf{Included Use cases} \newline
+ Use cases that are included are necessary to provide the lower level functionality needed in order to achieve the higher level functionality. These all deal with the resources and retrieving from storage. They  are:\newline
+ \newline
+ \textbf{addGroupPhoto  – Priority: Important} \newline
+ \begin{itemize}
+ \item	This use case allows a member of the group and the administrator, on group creation, to add a group photo. On group creation, if the creator does not specify a group photo, a default one is assigned.\newline
+ \end{itemize}
+ \textbf{getContactList – Priority: Important} \newline
+ \begin{itemize}
+ \item	This use case gets the user trying to create the group’s contact list and checks whether each contact added to the group has Linphone or not. If not an exception is thrown otherwise the system proceeds further.\newline
+ \end{itemize}
+ \textbf{getGroups  – Priority: Critical} \newline
+ \begin{itemize}
+\item	This use case gets all the group names that the creator has in their chats list and checks that another group with the same name as the new group exists. If another group exists then an exception is thrown otherwise the system proceeds further. \newline
+\end{itemize}
+ \textbf{sendInvite – Priority: Critical} \newline
+ This use case is triggered when a group is created and when new members are added to the group.  \newline 
+\textbf{Services Contract:}
+ \begin{itemize}
+ \item	This use case contains the invite itself as well as information regarding where to send it etc.\newline
+ \end{itemize}
+\textbf{Pre-conditions} \newline
+ For each of the pre-conditions below an exception is introduced which is raised by the service to notify the caller that the service is not being provided as the pre-condition associated with that exception has not been met.\newline
+ The invite will not be sent if one of the following scenarios occurs:
+ \begin{itemize}
+ \item	The receiver of the invite is not a contact added by the administrator of the group.
+ \end{itemize}
+\textbf{Post-conditions} \newline
+ The post-conditions specify the conditions which must hold true when the service has been provided.
+ \begin{itemize}
+\item	The invite must be sent to the correct user.
+\end{itemize}
+ \includegraphics[width=380px]{./images/serviceContract-sendInvite.jpg} \newline
+\textbf{Functional Requirements}\newline
+ The functional requirements specify what the system should do and how the system should behave. Each use case has functional requirements and these specify the functions required by the use cases in order to use the service specified in the services contract. Each functional requirement is either checking for a post-condition or a precondition or both.\newline
+ \newline
+\includegraphics[width=200px]{./images/FR-sendInvite.jpg}
+ \newline
+\textbf{Process Specification} \newline
+ \newline
+ \includegraphics[width=200px]{./images/process-sendInvite.jpg}
+  \newline
+
+
 \subsubsection{Delete Group Chat} \label{UC-delete-group}
 \paragraph{Priority:}Critical
 \paragraph{Summary:}
@@ -191,93 +255,17 @@ The user selected receives administrator privileges while the current administra
 
 \subsection{Functional Requirements}
 \subsubsection{Create Group Chat} \label{FR-create-group}
-The ManageGroups module provides services to create, update and remove or leave groups.\newline
-\textbf{Description:} The user activates the createGroup functionality by selecting an option to create a new group chat. The system will provide the user with a screen where details about the group such as group photo, group name and group members need to be specified. If all pre-conditions are met then the group is created. It allows for all added members to exchange messages and communicate in a common space.\newline
-\newline
-\begin{itemize}
-\item ManageGroups.CreateGroup – Priority: Critical.
-\item	This use case allows users to create a group where more than 1 contact can communicate simultaneously together.
-\item	This creates a space where messages can be exchanged between users that are members of the groups.
-\end{itemize}
-\textbf{Services Contract:} \newline
-	\newline
-\begin{itemize}
-\item The CreateGroupRequest identifies the user that is creating the group and automatically assigns this user to be the administrator.
-\item It allows the user to select contacts that the user wishes to add to the group.
-\item The group members are then notified by receiving an invitation to join and are linked to the group.
-\item The service has three pre-conditions and three post-conditions
-\end{itemize}
-\includegraphics[width=380px]{./images/serviceContract-create.jpg} \newline
-\textbf{Pre-conditions} \newline
-For each of the pre-conditions below an exception is introduced which is raised by the service to notify the caller that the service is not being provided as the pre-condition associated with that exception has not been met.\newline
-The group will not be created if one of the following scenarios occurs:\newline
-\newline
-\begin{itemize}
-\item	User must have Linphone Service\newline
-\item	No other group with the same name may exist \newline
-\item	The user may not create the group unless there is at least one member/contact added.\newline
-\end{itemize}
-\textbf{Post-Conditions}\newline
-The post-conditions specify the conditions which must hold true when the service has been provided.\newline
-\newline
-\begin{itemize}
-\item	User is automatically assigned administrator rights
-\item	An invite is sent to users to ask them if they want to be part of the group
-\item	The group is created with the respective profiles and members
-\end{itemize}
-\textbf{Functional Requirements}\newline
- The functional requirements specify what the system should do and how the system should behave. Each use case has functional requirements and these specify the functions required by the use cases in order to use the service specified in the services contract. Each functional requirement is either checking for a post-condition or a precondition or both.\newline
- \newline
+\paragraph{Summary:} The create group use case should allow a user who has the Linphone service to create a group, name it, set detaials such as picture and add contacts to it.
+\paragraph{Rationale:} A user may need a central way of communicating with several users at a time and wish to have a way of communicating and exchanging messages with several people at a time and observe their replies to each other etc. Thus a group chat is needed.
+\paragraph{Requirements:} When the user decided to create a group, the user must be afforded the option to do so. Once selected the user must be provided with the opportunity to give the group a name and picture. The system shpuld check the validty of the above activities and then allow the user to proceed if all options are valid. The user should then be afforded the opportunity to add contacts to the group. Once more than one contact is added the user is afforded to continue and finish creating the group.
 \includegraphics[width=380px]{./images/FR-create.jpg}
- \newline
 \textbf{Process Specification} \newline
  \newline
  \includegraphics[width=380px]{./images/process-create.jpg}
-  \newline
- First the user creating the group fills in the relative details such as the group name and adds members to the group. Each of these members needs to have the Linphone service to be added to the group. If the contacts do not have Linphone, an error is thrown. Next the user tries to create the group. If less than 1 member is added then an error is thrown and the group is not created. If more than one member was added then the system continues to check whether there are any other groups with the same name. If so, then an exception is thrown, otherwise the user is assigned as group administrator, an invite is sent to the members and the group is created.\newline
- \newline
- \textbf{Included Use cases} \newline
- Use cases that are included are necessary to provide the lower level functionality needed in order to achieve the higher level functionality. These all deal with the resources and retrieving from storage. They  are:\newline
- \newline
- \textbf{addGroupPhoto  – Priority: Important} \newline
- \begin{itemize}
- \item	This use case allows a member of the group and the administrator, on group creation, to add a group photo. On group creation, if the creator does not specify a group photo, a default one is assigned.\newline
- \end{itemize}
- \textbf{getContactList – Priority: Important} \newline
- \begin{itemize}
- \item	This use case gets the user trying to create the group’s contact list and checks whether each contact added to the group has Linphone or not. If not an exception is thrown otherwise the system proceeds further.\newline
- \end{itemize}
- \textbf{getGroups  – Priority: Critical} \newline
- \begin{itemize}
-\item	This use case gets all the group names that the creator has in their chats list and checks that another group with the same name as the new group exists. If another group exists then an exception is thrown otherwise the system proceeds further. \newline
-\end{itemize}
- \textbf{sendInvite – Priority: Critical} \newline
- This use case is triggered when a group is created and when new members are added to the group.  \newline 
-\textbf{Services Contract:}
- \begin{itemize}
- \item	This use case contains the invite itself as well as information regarding where to send it etc.\newline
- \end{itemize}
-\textbf{Pre-conditions} \newline
- For each of the pre-conditions below an exception is introduced which is raised by the service to notify the caller that the service is not being provided as the pre-condition associated with that exception has not been met.\newline
- The invite will not be sent if one of the following scenarios occurs:
- \begin{itemize}
- \item	The receiver of the invite is not a contact added by the administrator of the group.
- \end{itemize}
-\textbf{Post-conditions} \newline
- The post-conditions specify the conditions which must hold true when the service has been provided.
- \begin{itemize}
-\item	The invite must be sent to the correct user.
-\end{itemize}
- \includegraphics[width=380px]{./images/serviceContract-sendInvite.jpg} \newline
-\textbf{Functional Requirements}\newline
- The functional requirements specify what the system should do and how the system should behave. Each use case has functional requirements and these specify the functions required by the use cases in order to use the service specified in the services contract. Each functional requirement is either checking for a post-condition or a precondition or both.\newline
- \newline
-\includegraphics[width=200px]{./images/FR-sendInvite.jpg}
- \newline
-\textbf{Process Specification} \newline
- \newline
- \includegraphics[width=200px]{./images/process-sendInvite.jpg}
-  \newline
+
+
+\paragraph{References:} UC \ref{UC-delete-group}
+
  
 \subsubsection{Delete Group Chat} \label{FR-delete-group}
 \paragraph{Summary:}
