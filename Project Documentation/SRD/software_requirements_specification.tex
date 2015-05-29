@@ -358,10 +358,10 @@ The user selected receives administrator privileges while the current administra
 \paragraph{References:} UC \ref{UC-create-group}
 
 \subsubsection{Send Invite} \label{FR-invite}
-\paragraph{Summary:}
-\paragraph{Rationale:}
-\paragraph{Requirements:}
-\paragraph{References:} UC \ref{}
+\paragraph{Summary:} Checks to see whether the user is a member. If so, sends invite.
+\paragraph{Rationale:} Users need to be addded to the group via an invite. If the user being invited is already a member, they should not receive an invite.
+\paragraph{Requirements:} User must be added to the group by a member with the neccessary priveleges.
+\paragraph{References:} UC \ref{UC-create-group}
  \begin{figure}[H]
  \centering
  \includegraphics[width=3in]{./images/process-sendInvite.jpg}
