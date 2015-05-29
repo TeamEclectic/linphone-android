@@ -95,12 +95,27 @@ The scope of this document will cover the requirements of the features for the L
 \section{Specific Requirements}
 %\subsection{External Interface Requirements}
 \subsection{User Interfaces}
- % user interface changes
+\paragraph{Group Chat Interface} The group chat interface will be implemented as an extension of the existing Linphone chat interface. This will involve the following modifications
+\begin{itemize}
+\item Displaying an indication that a subscribed user is busy typing
+\item Improving word spacing on message displays
+\item Increasing message font sizes
+\item Improving message indentation for sender clarity
+\item Associating a sender name to a message and displaying the name, since multiple users send messages via group chat.
+\item Improving user profile picture displays
+\end{itemize}
+\paragraph{Group Chat Creation Interface} This interface will allow users to create a group for group chat purposes. Some parameters to be provided for editing on this interface:
+\begin{itemize}
+\item Enabling encryption
+\item Group Name
+\item Add a member functionality
+\end{itemize}
+\paragraph{Group Chat Settings Interface} This will be a specialisation of the Group Chat Creation Interface. Additionally functionality to remove a subscribed member from the group will be provided.
 
 %\subsubsection{Hardware Interfaces}
 %\subsubsection{Software Interfaces}
 %\subsubsection{Communication Interfaces}
-
+\newpage
 \subsection{Use Cases}
 \subsubsection{Create Group Chat} \label{UC-create-group}
 \paragraph{Priority:}Critical
@@ -319,6 +334,8 @@ The user selected receives administrator privileges while the current administra
 \paragraph{{Postconditions:}} The voice recording has been downloaded and is available for playback.
 %\includegraphics[]{name} -- for use case diagram
 
+\newpage
+
 \subsection{Functional Requirements}
 \subsubsection{Create Group Chat} \label{FR-create-group}
 \paragraph{Summary:} The create group use case should allow a user who has the Linphone service to create a group, name it, set details such as the profile picture and add contacts to it.
@@ -407,7 +424,7 @@ Once the administrator opts to remove a user from the list of users currently in
 \end{figure}
 \paragraph{References:} UC \ref{UC-delete-group}
 
-
+\newpage
 \subsection{Non-Functional Requirements}
 
 \subsubsection{Scalability Constraints for Add User} \label{NFR-scalability-add-member}
