@@ -403,6 +403,12 @@ Once the administrator opts to remove a user from the list of users currently in
 \paragraph{Requirements:} The send message use case will incorporate encryption as a functional requirement and the receive message use case will incorporate decryption as a functional requirement.
 \paragraph{References:} UC \ref{UC-send-message}, UC \ref{UC-receive-message}, FR \ref{FR-send-message-encrypted}, FR \ref{FR-decrypt-received-message}
 
+\subsubsection{Availability Constraints for Receive Message} \label{NFR-availability-receive-message}
+\paragraph{Summary:} A Linphone client should be able to receive a message whenever a message has been sent to it.
+\paragraph{Rationale:} Although already implemented, the receive message use case needs to incorporate decryption of a received message using the AES256 protocol and will therefore be modified or integrated with a decryption implementation. Evoking a receive request should maintain high availability, since many messages can be sent in sequence during a group chat session.
+\paragraph{Requirements:} Evoking a receive request should maintain high availability in the form of multi-threading or a similar technique.
+\paragraph{References:} UC \ref{UC-receive-message}, FR \ref{FR-decrypt-received-message}
+
 
 %\section{Requirements Traceability Matrix}
 
