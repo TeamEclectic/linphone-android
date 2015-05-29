@@ -369,10 +369,16 @@ The user selected receives administrator privileges while the current administra
  \label{FR-figure-send-invite}
  \end{figure}
  
-\subsubsection{Check If Last Member} \label{FR-delete-group}
-\paragraph{Summary:}
-\paragraph{Rationale:}
-\paragraph{Requirements:}
+ \subsubsection{Local Delete} \label{FR-Local-Delete}
+ \paragraph{Summary:} The Delete Group must remove the group chat from the user's device.
+ \paragraph{Rationale:} When a user deletes a group, the group chat that is stored locally must be removed.
+ \paragraph{Requirements:} The Delete Group request must call a Local Delete on the group chat to remove it from the user's device.
+ \paragraph{References:} UC \ref{UC-delete-group}
+ 
+\subsubsection{Check If Last Member} \label{FR-Check-Last-User}
+\paragraph{Summary:} The Delete Group must call a check to see whether the user is the only user in the group. If so, the group is completely deleted.
+\paragraph{Rationale:} If all the users have a left a group, it should cease to be.
+\paragraph{Requirements:} When a user leaves a group, a check should be done to determine whether they are the last remaining user.
 \paragraph{References:} UC \ref{UC-delete-group}
 
 \subsubsection{Update Group Profile Picture} \label{FR-update-group-picture}
