@@ -204,7 +204,10 @@ The post-conditions specify the conditions which must hold true when the service
 \paragraph{Preconditions:} The user must be part of a group.
 \paragraph{{Postconditions:}} 
 \begin{itemize}
-	\item User leaving is the administrator:
+	\item The chat is locally deleted from the user's phone.
+	\item The user is removed/unlinked from the group chat.
+	\item If the user leaving is the administrator: The administrative priveleges are assigned to another group member.
+
 \end{itemize}
 %\includegraphics[]{name} -- for use case diagram
 
