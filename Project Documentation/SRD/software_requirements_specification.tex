@@ -16,6 +16,7 @@
 \input{./title_page.tex}
 
 \setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
 \tableofcontents
 
 \newpage
@@ -84,7 +85,8 @@ The scope of this document will cover the requirements of the features for the L
 \end{figure}
 \subsection{Definitions, Acronyms \& Abbreviations}
 \subsubsection{Internal Documentation}
-\paragraph{FR:} Stands for Functional Requirement. Functional requirements define the internal workings of the software to show how the use cases are satisfied.
+\paragraph{FR:}
+ Stands for Functional Requirement. Functional requirements define the internal workings of the software to show how the use cases are satisfied.
 \paragraph{NFR:} Stands for Non-functional Requirement. Non-functional requirements impose constraints on the design or implementation of the software.
 \paragraph{UC:} Stands for Use Case. Use Cases describe the external behaviour of the software when a user interacts with it.
 \subsubsection{External Documentation}
@@ -93,28 +95,23 @@ The scope of this document will cover the requirements of the features for the L
 %\subsection{Overview}
 
 \section{Specific Requirements}
-%\subsection{External Interface Requirements}
 \subsection{User Interfaces}
-\paragraph{Group Chat Interface} The group chat interface will be implemented as an extension of the existing Linphone chat interface. This will involve the following modifications
-\begin{itemize}
-\item Displaying an indication that a subscribed user is busy typing
-\item Improving word spacing on message displays
-\item Increasing message font sizes
-\item Improving message indentation for sender clarity
-\item Associating a sender name to a message and displaying the name, since multiple users send messages via group chat.
-\item Improving user profile picture displays
-\end{itemize}
-\paragraph{Group Chat Creation Interface} This interface will allow users to create a group for group chat purposes. Some parameters to be provided for editing on this interface:
-\begin{itemize}
-\item Enabling encryption
-\item Group Name
-\item Add a member functionality
-\end{itemize}
-\paragraph{Group Chat Settings Interface} This will be a specialisation of the Group Chat Creation Interface. Additionally functionality to remove a subscribed member from the group will be provided.
+\subsubsection{Group Chat Interface} The group chat interface will be implemented as an extension of the existing Linphone chat interface. It may involve the following modifications:
+\paragraph{Busy Typing Indication} When a user is busy typing a message, an indication of this may be displayed with a text description such as \textit{"John Doe is typing..."}.
+\paragraph{Improved Word Spacing} The spacing between words in messages and the general user interface may be increased or decreased for better readability.
+\paragraph{Message Font Sizes} The font sizes for the interface may be increased or decreased to improve readability.
+\paragraph{Sender/Message Association} The sender of each message will be identified for each message to clarify who the sender is.
+\paragraph{Improved Profile Picture Display} The interface may include an elegant display of member profile pictures.
+\subsubsection{Group Chat Creation Interface} This interface will allow users to create a group. Some details on the interface are as follows:
+\paragraph{Naming The Group} The user will be able to provide a name for the group.
+\paragraph{Adding Members} The user will be able to add members to the group by pressing the appropriate button on this interface.
+\paragraph{Enabling Encryption} The user will be able to choose whether messages sent within the group should be encrypted or not, using this interface.
+\subsubsection{Group Chat Settings Interface} This will be a specialisation of the Group Chat Creation Interface. Some specifics on the interface are stated below.
+\paragraph{Changing Group Name} The administrator may be able to change the name of the group.
+\paragraph{Changing Group Picture} The administrator may be able to change the group profile picture.
+\paragraph{Adding New Members} The administrator will be able to add new members to the group.
+\paragraph{Removing Members} The administrator will be able to remove  members from the group.
 
-%\subsubsection{Hardware Interfaces}
-%\subsubsection{Software Interfaces}
-%\subsubsection{Communication Interfaces}
 \newpage
 \subsection{Use Cases}
 \subsubsection{Create Group Chat} \label{UC-create-group}
