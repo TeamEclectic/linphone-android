@@ -25,7 +25,7 @@
 \begin{tabular}{llll}
 \textbf{Date}          & \textbf{Description}  & \textbf{Author}       & \textbf{Comments}   \\ \hline
 \multicolumn{1}{|R{2cm}|}{26/05/2015} & \multicolumn{1}{L{4.5cm}|}{Document Creation} & \multicolumn{1}{l|}{Team Eclectic} & \multicolumn{1}{L{4cm}|}{Version 1} \\ \hline
-\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{10/06/2015} & \multicolumn{1}{l|}{Document Revision 1} & \multicolumn{1}{l|}{Team Eclectic} & \multicolumn{1}{l|}{Version 2} \\ \hline
 \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
 \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
 \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
@@ -59,8 +59,6 @@
 \subsection{Purpose}
 The purpose of this document is to provide a detailed discussion of the Linphone Group Chat Extension system requirements and behaviour, in preparation for design and implementation. These requirements include use cases, functional and non-functional requirements as well as a description of the adjustments to be made to the existing user interfaces.
 \subsection{Scope}
-%The scope of this documentation is to cover all use cases and functional requirements that are necessary to provide group chat functionality to the Linphone service. \newline
-%The scope of ManageGroups is restricted to creating, deleting and removing groups. These are further split up into lower-level use cases that are needed in order to achieve the desired functionality.
 The scope of this document will cover the requirements of the features for the Linphone Group Chat Extension project, which are listed as follows:
 \begin{itemize}
 \item providing group chat capabilities such as:
@@ -91,8 +89,6 @@ The scope of this document will cover the requirements of the features for the L
 \paragraph{UC:} Stands for Use Case. Use Cases describe the external behaviour of the software when a user interacts with it.
 \subsubsection{External Documentation}
 \paragraph{AES256:} AES stands for Advanced Encryption Standard and is a specification for encryption of electronic data. AES256 is a specific encryption algorithm that uses block sizes of 256 bits.
-%\subsection{References}
-%\subsection{Overview}
 
 \section{Specific Requirements}
 \subsection{User Interfaces}
@@ -115,7 +111,7 @@ The scope of this document will cover the requirements of the features for the L
 \newpage
 \subsection{Use Cases}
 \subsubsection{Create Group Chat} \label{UC-create-group}
-\paragraph{Summary:} A user will be able to create a new group.
+\paragraph{Summary:} A user shall be able to create a new group.
 \paragraph{Rationale:} The main aspect of the extension to the Linphone project is to provide group chat functionality. This feature will give the user the ability to create and initialize a new group.
 \paragraph{Users:}  Any Linphone user.
 \paragraph{Preconditions:}For each of the pre-conditions below an exception is raised where that precondition is not met, to indicate service refusal.
@@ -178,7 +174,6 @@ The post-conditions specify the conditions which must hold true when the service
 %\end{figure}
 
 \subsubsection{Delete Group Chat} \label{UC-delete-group}
-\paragraph{Priority:}Critical
 \paragraph{Summary:}A user can leave a group chat. When all the users leave a group chat, it will be deleted. If only one person remains in a group chat, that person will be unable to send messages to the chat until at least one other person is added to the chat. If the group owner leaves the group, a new owner is automatically assigned.
 \paragraph{Rationale:}When an owner of a group leaves the group, the administrative privileges need to be reallocated. The group chat should persist as long as there is at least one user in the group. In the case of only one user remaining, preventing that user from sending messages will guard against misuse of the group chat, as well acting as an alert that the user's message would not have been seen by any other users.
 \paragraph{Users:} Any user of the Linphone application.
@@ -312,8 +307,6 @@ The user selected receives administrator privileges while the current administra
 \paragraph{{Postconditions:}} The voice recording will have been downloaded and will be available for playback.
 %\includegraphics[]{name} -- for use case diagram
 
-\newpage
-
 \subsection{Functional Requirements}
 \subsubsection{Create Group Chat} \label{FR-create-group}
 \paragraph{Summary:} The create group use case should allow a user who has the Linphone service to create a group, name it, set details such as the profile picture and add contacts to it.
@@ -419,7 +412,6 @@ Some requirements which might be additionally implemented, but which are not req
 \item Delete Message from group chat interface
 \end{itemize}
 
-\newpage
 \subsection{Non-Functional Requirements}
 
 \subsubsection{Scalability Constraints for Add User} \label{NFR-scalability-add-member}
@@ -434,10 +426,16 @@ Some requirements which might be additionally implemented, but which are not req
 \paragraph{Requirements:} Messages should be sent to all group members within reasonable time, but as fast as possible. The time within which the message should be received should be about 5 seconds. However, factors to take into account may include user availability (the user may be off-line) and network congestion and/or connection issues. Refer to NFR \ref{NFR-reliability-send-message} for details on reliability of Send Message.
 \paragraph{References:} UC \ref{UC-send-message}
 
-\subsubsection{Reliability Constraints for Send Message} \label{NFR-reliability-send-message}
-\paragraph{Summary:} The send message feature should be reliable, indicating failed or successful message broadcasts.
+\subsubsection{Reliability Constraint for Send Message: Time} \label{NFR-reliability-send-message-1}
+\paragraph{Summary:} The send message feature should be reliable, indicating failed or successful message broadcasts within 60 seconds.
 \paragraph{Rationale:} Users should be notified if their message was sent or not, allowing them to take the necessary action to complete their communication. If a user does not receive some form of confirmation of success or failure, the user will have to assume that the message was sent even if or when it was not, resulting in an unreliable service.
-\paragraph{Requirements:} The send message feature shall provide some indication of success after perform its tasks.
+\paragraph{Requirements:} The send message feature shall provide some indication of success after perform its tasks. If success is not determined after 60 seconds, a failure to send should be indicated.
+\paragraph{References:} UC \ref{UC-send-message}, FR \ref{FR-send-message-indicator}
+
+\subsubsection{Reliability Constraint for Send Message: Success Rate} \label{NFR-reliability-send-message-2}
+\paragraph{Summary:} The send message feature should be reliable, not failing more than 0.1\% of the time under ideal conditions.
+\paragraph{Rationale:} If the application cannot ensure that messages are always sent when there are no external factors preventing the messages from being sent, then users will refrain from using the product any further.
+\paragraph{Requirements:} In the event that a message is not sent, it should retry a number of times before giving up.
 \paragraph{References:} UC \ref{UC-send-message}, FR \ref{FR-send-message-indicator}
 
 \subsubsection{Security Constraints for Send Message and Receive Message} \label{NFR-security-send-message-and-receive-message}
