@@ -90,7 +90,7 @@ The scope of this document will cover the requirements of the features for the L
 \subsubsection{External Documentation}
 \paragraph{AES256:} AES stands for Advanced Encryption Standard and is a specification for encryption of electronic data. AES256 is a specific encryption algorithm that uses block sizes of 256 bits.
 %\subsection{References}
-\subsection{Overview}
+%\subsection{Overview}
 
 \section{Specific Requirements}
 %\subsection{External Interface Requirements}
@@ -134,12 +134,12 @@ The group will not be created if one of the following preconditions is not met:
 \item	An invite is sent to the other added users to ask them if they want to be part of the group.
 \item	The group is created with the respective profiles and members.
 \end{itemize}
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/FR-create.jpg}
-\caption[UC-figure-create-group]{A use case diagram for creating groups.}
-\label{UC-figure-create-group}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/FR-create.jpg}
+%\caption[UC-figure-create-group]{A use case diagram for creating groups.}
+%\label{UC-figure-create-group}
+%\end{figure}
 \textbf{Services Contract:}
 \begin{itemize}
 \item The CreateGroupRequest identifies the user that is creating the group and automatically assigns administrative rights to this user.
@@ -147,12 +147,12 @@ The group will not be created if one of the following preconditions is not met:
 \item The group members are then notified by receiving an invitation to join and are linked to the group, provided they accept the invite.
 \item The service has three pre-conditions and three post-conditions.
 \end{itemize}
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/serviceContract-create.jpg} \newline
-\caption[Create Group Services Contract]{A UML diagram showing the services contract for group creation.}
-\label{SC-figure-create-group}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/serviceContract-create.jpg} \newline
+%\caption[Create Group Services Contract]{A UML diagram showing the services contract for group creation.}
+%\label{SC-figure-create-group}
+%\end{figure}
 %\paragraph{Included Use Cases} % this needs reformating, many of these should be functional requirements instead of use cases as the describe the inner workings of the create group use case.
 % Use cases that are included are necessary to provide the lower level functionality needed in order to achieve the higher level functionality. These all deal with the resources and retrieving from storage. They  are:\newline
 % \newline
@@ -184,17 +184,17 @@ The post-conditions specify the conditions which must hold true when the service
  \begin{itemize}
 \item	The invite must be sent to the correct user.
 \end{itemize}
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/serviceContract-sendInvite.jpg}
-\caption[Send Invite Services Contract]{A UML services contract for the Send Invite use case.}
-\label{SC-figure-send-invite}
-\end{figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=3in]{./images/FR-sendInvite.jpg}
-\caption[Send Invite Use Case Diagram]{A UML use case diagram for Send Invite.}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/serviceContract-sendInvite.jpg}
+%\caption[Send Invite Services Contract]{A UML services contract for the Send Invite use case.}
+%\label{SC-figure-send-invite}
+%\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=3in]{./images/FR-sendInvite.jpg}
+%\caption[Send Invite Use Case Diagram]{A UML use case diagram for Send Invite.}
+%\end{figure}
 
 \subsubsection{Delete Group Chat} \label{UC-delete-group}
 \paragraph{Priority:}Critical
@@ -209,12 +209,12 @@ The post-conditions specify the conditions which must hold true when the service
 	\item If the user leaving is the administrator: The administrative priveleges are assigned to another group member.
 	\item If the user is the last user in the group, their ability to send messages to the group is locked.
 \end{itemize}
-\begin{figure}[H]
-	\centering
-\includegraphics[width=5in]{./images/UC_DeleteGroupChat.jpg}
-\caption[Delete Group Chat Use Case Diagram]{This use case diagram shows deleting a group chat.}
-\label{UC-figure-delete-group}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%\includegraphics[width=5in]{./images/UC_DeleteGroupChat.jpg}
+%\caption[Delete Group Chat Use Case Diagram]{This use case diagram shows deleting a group chat.}
+%\label{UC-figure-delete-group}
+%\end{figure}
 
 \subsubsection{Update Group Chat Profile} \label{UC-update-group}
 \paragraph{Priority:} Important
@@ -256,12 +256,12 @@ All users. (Administration can remove other users, all users can remove themselv
 A group exists with more than one member.
 \paragraph{{Postconditions:}}
 The user is no longer a part of the group which entails the user not receiving messages from the group, etc.
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/UC_AddRemove_Member.jpg}
-\caption[Add/Remove Member use case]{This UML case diagram shows the use case for adding and removing members combined as both are simple and utilise essentially the same use case.}
-\label{UC-figure-addremove-member}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/UC_AddRemove_Member.jpg}
+%\caption[Add/Remove Member use case]{This UML case diagram shows the use case for adding and removing members combined as both are simple and utilise essentially the same use case.}
+%\label{UC-figure-addremove-member}
+%\end{figure}
 
 \subsubsection{Change Administrator} \label{UC-change-admin}
 \paragraph{Priority:} Important
@@ -307,13 +307,11 @@ The user selected receives administrator privileges while the current administra
 \item The message is analysed/parsed
 \item The message is displayed on the group chat interface
 \end{itemize}
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/UC_Receive_Message.png}
-\caption[Receive Message Use Case Diagram]{This use case diagram shows receive message and receive voice recording together.}
-\label{FR-figure-create-group}
-\end{figure}
-\paragraph{References:} UC \ref{UC-receive-voice}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/UC_Receive_Message.png}
+%\caption[Receive Message Use Case Diagram]{This use case diagram shows receive message and receive voice recording together.}
+%\end{figure}
 
 \subsubsection{Send Voice Recording} \label{UC-send-voice}
 \paragraph{Priority:} Important
@@ -322,12 +320,12 @@ The user selected receives administrator privileges while the current administra
 \paragraph{Users:} Any user of the Linphone application.
 \paragraph{Preconditions:} The user's device must support voice recording --- the device requires a microphone to support this.
 \paragraph{{Postconditions:}} A message has been sent to the recipient containing the voice recording.
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/send_message_UC.png}
-\caption[Send Message Use Case]{This UML case diagram shows the use case for Send Message and Send Voice Recording in combination as Send Voice Recording is essentially an specialization of Send Message.}
-\label{UC-figure-send-message}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/send_message_UC.png}
+%\caption[Send Message Use Case]{This UML case diagram shows the use case for Send Message and Send Voice Recording in combination as Send Voice Recording is essentially an specialization of Send Message.}
+%\label{UC-figure-send-message}
+%\end{figure}
 
 \subsubsection{Receive Voice Recording} \label{UC-receive-voice}
 \paragraph{Priority:} Important
@@ -349,12 +347,12 @@ The user selected receives administrator privileges while the current administra
 \paragraph{Summary:} The create group use case should allow a user who has the Linphone service to create a group, name it, set details such as the profile picture and add contacts to it.
 \paragraph{Rationale:} A user may need a central way of communicating with several users at a time and wish to have a way of communicating and exchanging messages with several people at a time and observe their replies to each other etc. Thus a group chat is needed.
 \paragraph{Requirements:} When the user decides to create a group, the user must be afforded the option to do so. Once selected the user must be provided with the opportunity to give the group a name and picture. The system should check the validity of the above activities and then allow the user to proceed if all options are valid. The user should then be allowed to add contacts to the group. Once more than one contact is added the user is allowed to continue and finish creating the group.
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/process-create.jpg}
-\caption[Create Group Activity Diagram]{An activity diagram showing the group creation process.}
-\label{FR-figure-create-group}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/process-create.jpg}
+%\caption[Create Group Activity Diagram]{An activity diagram showing the group creation process.}
+%\label{FR-figure-create-group}
+%\end{figure}
 \paragraph{References:} UC \ref{UC-create-group}
 
 \subsubsection{Send Invite} \label{FR-invite}
@@ -362,12 +360,12 @@ The user selected receives administrator privileges while the current administra
 \paragraph{Rationale:} Users need to be addded to the group via an invite. If the user being invited is already a member, they should not receive an invite.
 \paragraph{Requirements:} User must be added to the group by a member with the neccessary priveleges.
 \paragraph{References:} UC \ref{UC-create-group}
- \begin{figure}[H]
- \centering
- \includegraphics[width=3in]{./images/process-sendInvite.jpg}
- \caption[Send Invite Activity Diagram]{An activity diagram for the Send Invite use case.}
- \label{FR-figure-send-invite}
- \end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=3in]{./images/process-sendInvite.jpg}
+% \caption[Send Invite Activity Diagram]{An activity diagram for the Send Invite use case.}
+% \label{FR-figure-send-invite}
+% \end{figure}
  
  \subsubsection{Local Delete} \label{FR-Local-Delete}
  \paragraph{Summary:} The Delete Group must remove the group chat from the user's device.
@@ -430,12 +428,12 @@ Once the administrator opts to remove a user from the list of users currently in
 \paragraph{Summary:} Decryption of received messages is required before display and further processing.
 \paragraph{Rationale:} Group administrators can enable encryption for all messages sent on the group. These messages are encrypted before being sent and should be decrypted after received.
 \paragraph{Requirements:} When encryption is enabled, the send message feature shall use the AES265 encryption algorithm to encrypt the message before broadcasting it to the group members. In this case, the AES265 algorithm will also be used to decrypt the message once received by members subscribed to the group, given that encryption for messages sent on the group is enabled.
-\begin{figure}[H]
-\centering
-\includegraphics[width=5in]{./images/Activity_Receive_Message.png}
-\caption[Receive Message Activity Diagram]{An activity diagram showing the receive message process and the  usage of encryption in process flow.}
-\label{FR-figure-activity-receive-message}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=5in]{./images/Activity_Receive_Message.png}
+%\caption[Receive Message Activity Diagram]{An activity diagram showing the receive message process and the  usage of encryption in process flow.}
+%\label{FR-figure-activity-receive-message}
+%\end{figure}
 \paragraph{References:} UC \ref{UC-delete-group}
 
 \subsubsection{Nice to Have Requirements}	\label{FR-nice-to-have}
@@ -480,12 +478,12 @@ Some requirements which might be additionally implemented, but which are not req
 \paragraph{References:} UC \ref{UC-receive-message}, FR \ref{FR-decrypt-received-message}
 
 
-%\section{Requirements Traceability Matrix}
-
-\newpage
-
-\newpage
-\section{Appendix A} \label{appendix-a}
-\listoffigures
+%%\section{Requirements Traceability Matrix}
+%
+%\newpage
+%
+%\newpage
+%\section{Appendix A} \label{appendix-a}
+%\listoffigures
 
 \end{document}
