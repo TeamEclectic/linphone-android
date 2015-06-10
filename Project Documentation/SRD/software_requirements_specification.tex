@@ -115,9 +115,8 @@ The scope of this document will cover the requirements of the features for the L
 \newpage
 \subsection{Use Cases}
 \subsubsection{Create Group Chat} \label{UC-create-group}
-\paragraph{Priority:}Critical
-\paragraph{Summary:} A user creates a new group. This feature makes use of a number of other use cases to accomplish this goal.
-\paragraph{Rationale:} The main aspect of the extension to the Linphone project is to provide group chat functionality. This feature gives the user the ability to create and initialize the group.
+\paragraph{Summary:} A user will be able to create a new group.
+\paragraph{Rationale:} The main aspect of the extension to the Linphone project is to provide group chat functionality. This feature will give the user the ability to create and initialize a new group.
 \paragraph{Users:}  Any Linphone user.
 \paragraph{Preconditions:}For each of the pre-conditions below an exception is raised where that precondition is not met, to indicate service refusal.
 The group will not be created if one of the following preconditions is not met:
@@ -137,13 +136,13 @@ The group will not be created if one of the following preconditions is not met:
 %\caption[UC-figure-create-group]{A use case diagram for creating groups.}
 %\label{UC-figure-create-group}
 %\end{figure}
-\textbf{Services Contract:}
-\begin{itemize}
-\item The CreateGroupRequest identifies the user that is creating the group and automatically assigns administrative rights to this user.
-\item It allows the user to select contacts that the user wishes to add to the group.
-\item The group members are then notified by receiving an invitation to join and are linked to the group, provided they accept the invite.
-\item The service has three pre-conditions and three post-conditions.
-\end{itemize}
+%\textbf{Services Contract:}
+%\begin{itemize}
+%\item The CreateGroupRequest identifies the user that is creating the group %and automatically assigns administrative rights to this user.
+%\item It allows the user to select contacts that the user wishes to add to %the group.
+%\item The group members are then notified by receiving an invitation to %join and are linked to the group, provided they accept the invite.
+%\item The service has three pre-conditions and three post-conditions.
+%\end{itemize}
 %\begin{figure}[H]
 %\centering
 %\includegraphics[width=5in]{./images/serviceContract-create.jpg} \newline
@@ -153,8 +152,8 @@ The group will not be created if one of the following preconditions is not met:
  
 
 \subsubsection{Send Invite} \label{UC-send-invite}
-\paragraph{Summary:} Send Invite is triggered when a group is created with new members or when a new member is added to the group. The invite informs the user that they are added to a group and can either accept it or decline it.
-\paragraph{Rationale:} It is done so that new members can join a group chat.
+\paragraph{Summary:} An Invite will be sent when a group is created with new members or when a new member is added to the group.
+\paragraph{Rationale:} It is done so that new members can join a group chat. The invite informs the user that they are added to a group and can either accept it or decline it.
 \paragraph{Preconditions:}
  For each of the pre-conditions below an exception is introduced which is raised by the service to notify the caller that the service is not being provided as the pre-condition associated with that exception has not been met.\newline
  The invite will not be sent if one of the following scenarios occurs:
