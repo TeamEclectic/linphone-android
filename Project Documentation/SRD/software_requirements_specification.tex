@@ -108,7 +108,6 @@ The scope of this document will cover the requirements of the features for the L
 \paragraph{Adding New Members} The administrator will be able to add new members to the group.
 \paragraph{Removing Members} The administrator will be able to remove  members from the group.
 
-\newpage
 \subsection{Use Cases}
 \subsubsection{Create Group Chat} \label{UC-create-group}
 \paragraph{Summary:} A user shall be able to create a new group.
@@ -148,7 +147,7 @@ The group will not be created if one of the following preconditions is not met:
  
 
 \subsubsection{Send Invite} \label{UC-send-invite}
-\paragraph{Summary:} An Invite will be sent when a group is created with new members or when a new member is added to the group.
+\paragraph{Summary:} An invite shall be sent to each user added to the group upon creation or when a new member is added to the group.
 \paragraph{Rationale:} It is done so that new members can join a group chat. The invite informs the user that they are added to a group and can either accept it or decline it.
 \paragraph{Preconditions:}
  For each of the pre-conditions below an exception is introduced which is raised by the service to notify the caller that the service is not being provided as the pre-condition associated with that exception has not been met.\newline
@@ -161,20 +160,9 @@ The post-conditions specify the conditions which must hold true when the service
  \begin{itemize}
 \item	The invite must be sent to the correct user.
 \end{itemize}
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=5in]{./images/serviceContract-sendInvite.jpg}
-%\caption[Send Invite Services Contract]{A UML services contract for the Send Invite use case.}
-%\label{SC-figure-send-invite}
-%\end{figure}
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=3in]{./images/FR-sendInvite.jpg}
-%\caption[Send Invite Use Case Diagram]{A UML use case diagram for Send Invite.}
-%\end{figure}
 
 \subsubsection{Delete Group Chat} \label{UC-delete-group}
-\paragraph{Summary:}A user can leave a group chat. When all the users leave a group chat, it will be deleted. If only one person remains in a group chat, that person will be unable to send messages to the chat until at least one other person is added to the chat. If the group owner leaves the group, a new owner is automatically assigned.
+\paragraph{Summary:}A user shall be able to leave a group chat. When all the users leave a group chat, it will be deleted. If only one person remains in a group chat, that person will be unable to send messages to the chat until at least one other person is added to the chat. If the group owner leaves the group, a new owner is automatically assigned.
 \paragraph{Rationale:}When an owner of a group leaves the group, the administrative privileges need to be reallocated. The group chat should persist as long as there is at least one user in the group. In the case of only one user remaining, preventing that user from sending messages will guard against misuse of the group chat, as well acting as an alert that the user's message would not have been seen by any other users.
 \paragraph{Users:} Any user of the Linphone application.
 \paragraph{Preconditions:} The user must be part of a group.
@@ -185,12 +173,6 @@ The post-conditions specify the conditions which must hold true when the service
 	\item If the user leaving is the administrator: The administrative priveleges are assigned to another group member.
 	\item If the user is the last user in the group, their ability to send messages to the group is locked.
 \end{itemize}
-%\begin{figure}[H]
-%	\centering
-%\includegraphics[width=5in]{./images/UC_DeleteGroupChat.jpg}
-%\caption[Delete Group Chat Use Case Diagram]{This use case diagram shows deleting a group chat.}
-%\label{UC-figure-delete-group}
-%\end{figure}
 
 \subsubsection{Update Group Chat Profile} \label{UC-update-group}
 \paragraph{Summary:}
@@ -203,11 +185,10 @@ Any member of the group.
 A group exists and has members.
 \paragraph{{Postconditions:}}
 The current name, subject, or profile picture has been changed.
-%\includegraphics[]{name} -- for use case diagram
 
 \subsubsection{Add Member} \label{UC-add-member}
 \paragraph{Summary:}
-A user is added to the list of users currently in the group.
+The administrator shall be able to add new users to the group.
 \paragraph{Rationale:}
 The group does not have a static amount of users, this is inefficient. If the creator of the group has forgotten to add a user to the group after initial creation, the creator shall still be able to add the user later. Should a user relevant to the group appear after creation of the group, the user shall still be able to join the group. In addition, should a user leave, the user shall be able to come back to the group.
 \paragraph{Users:}
@@ -216,11 +197,10 @@ Creator or the current administrator of the group.
 Group exists with an administrator in it.
 \paragraph{{Postconditions:}}
 The user is added to the list of current users in the group and receives messages, etc.
-%\includegraphics[]{name} -- for use case diagram
 
 \subsubsection{Remove Member} \label{UC-remove-member}
 \paragraph{Summary:}
-A user is removed from the list of users currently in the group.
+The administrator shall be able to remove members from  the group. That user is removed from the list of users currently in the group.
 \paragraph{Rationale:}
 Should a user be added to the group accidentally, it shall be possible to remove said user. Users shall additionally be able to remove themselves from the group should they no longer require it. Being able to remove users and users being able to remove themselves aides in the management of the group.
 \paragraph{Users:}
@@ -238,7 +218,7 @@ The user is no longer a part of the group which entails the user not receiving m
 
 \subsubsection{Change Administrator} \label{UC-change-admin}
 \paragraph{Summary:}
-Removes administrator privileges from the current administrator and reassigns to another user within the group.
+The administrator shall be able to reassign a group administrator. This removes administrator privileges from the current administrator and reassigns them to another user within the group.
 \paragraph{Rationale:}
 If a user prefers not to be administrator anymore or the current administrator would like to leave the group, assigning a new user within the group with administrator privileges makes management of the group easier.
 \paragraph{Users:}
@@ -264,7 +244,7 @@ The user selected receives administrator privileges while the current administra
 \end{itemize}
 
 \subsubsection{Receive Message} \label{UC-receive-message}
-\paragraph{Summary:} A message object sent on a group will be received by every member subscribed to a group.
+\paragraph{Summary:} A message object sent on a group shall be received by every member subscribed to a group.
 \paragraph{Rationale:} After a message has been broadcast to all members subscribed/linked to a group, each member should be able to receive the message upon receiving a broadcast request. This involves analysing and displaying the message using the appropriate interface. 
 \paragraph{Users:} Any registered member of the particular group on which a message is broadcast.
 \paragraph{Preconditions:} 
@@ -296,7 +276,7 @@ The user selected receives administrator privileges while the current administra
 %\end{figure}
 
 \subsubsection{Receive Voice Recording} \label{UC-receive-voice}
-\paragraph{Summary:} A user will be able to record voice messages and send them via IM. Other users should be able to receive this message type and listen to it.
+\paragraph{Summary:} A user may be able to record voice messages and send them via IM. Other users should be able to receive this message type and listen to it.
 \paragraph{Rationale:} Voice messages sent over group chat should be receivable by all members linked to the group. Members should be able to download and listen to the message.
 \paragraph{Users:} Any user of the Linphone application having received a voice message.
 \paragraph{Preconditions:} 
@@ -312,34 +292,22 @@ The user selected receives administrator privileges while the current administra
 \paragraph{Summary:} The create group use case should allow a user who has the Linphone service to create a group, name it, set details such as the profile picture and add contacts to it.
 \paragraph{Rationale:} A user may need a central way of communicating with several users at a time and wish to have a way of communicating and exchanging messages with several people at a time and observe their replies to each other etc. Thus a group chat is needed.
 \paragraph{Requirements:} When the user decides to create a group, the user must be afforded the option to do so. Once selected the user must be provided with the opportunity to give the group a name and picture. The system should check the validity of the above activities and then allow the user to proceed if all options are valid. The user should then be allowed to add contacts to the group. Once more than one contact is added the user is allowed to continue and finish creating the group.
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=5in]{./images/process-create.jpg}
-%\caption[Create Group Activity Diagram]{An activity diagram showing the group creation process.}
-%\label{FR-figure-create-group}
-%\end{figure}
 \paragraph{References:} UC \ref{UC-create-group}
 
 \subsubsection{Send Invite} \label{FR-invite}
-\paragraph{Summary:} Checks to see whether the user is a member. If so, sends invite.
+\paragraph{Summary:} Checks to see whether the user is a member. If so, and invite is sent.
 \paragraph{Rationale:} Users need to be addded to the group via an invite. If the user being invited is already a member, they should not receive an invite.
 \paragraph{Requirements:} User must be added to the group by a member with the neccessary priveleges.
 \paragraph{References:} UC \ref{UC-create-group}
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=3in]{./images/process-sendInvite.jpg}
-% \caption[Send Invite Activity Diagram]{An activity diagram for the Send Invite use case.}
-% \label{FR-figure-send-invite}
-% \end{figure}
  
  \subsubsection{Local Delete} \label{FR-Local-Delete}
- \paragraph{Summary:} The Delete Group must remove the group chat from the user's device.
+ \paragraph{Summary:} The Delete Group should remove the group chat from the user's device.
  \paragraph{Rationale:} When a user deletes a group, the group chat that is stored locally must be removed.
  \paragraph{Requirements:} The Delete Group request must call a Local Delete on the group chat to remove it from the user's device.
  \paragraph{References:} UC \ref{UC-delete-group}
  
 \subsubsection{Check If Last Member} \label{FR-Check-Last-User}
-\paragraph{Summary:} The Delete Group must call a check to see whether the user is the only user in the group. If so, the group is completely deleted.
+\paragraph{Summary:} The Delete Group should call a check to see whether the user is the only user in the group. If so, the group is completely deleted.
 \paragraph{Rationale:} If all the users have a left a group, it should cease to be.
 \paragraph{Requirements:} When a user leaves a group, a check should be done to determine whether they are the last remaining user.
 \paragraph{References:} UC \ref{UC-delete-group}
@@ -350,7 +318,6 @@ Updating may allow a user to remove the profile picture from the group or choose
 \paragraph{Rationale:}
 A user will often change the profile picture of the group, allowing the user to choose an image from local storage will afford the user more options.
 \paragraph{Requirements:}
-%If the user chooses to change the profile picture, the user may be afforded the option to remove the profile picture (replacing it with a default system image) or allow the user to choose a new picture by invoking the file manager in order to choose a picture from local storage. The updated profile picture should be visible to all users within the group after the change has taken place.
 If the user chooses to change the profile picture, the application may display the new picture to all group members within 60 seconds.
 \paragraph{References:} UC \ref{UC-update-group}
 
@@ -360,13 +327,12 @@ Once the user has been added to the group, the user shall be able to receive mes
 \paragraph{Rationale:}
 Users will be added at different times to other users therefore it shall be guaranteed that each user receives the same messages as other group members.
 \paragraph{Requirements:}
-%Once the administrator opts to add a user, the list of contacts the user currently has must appear and the user can choose another user to add to the group. When the user is selected, that user must be added to the group list and receive all messages sent in the group from that point.
 Once a user is added, the user shall be able to receive messages and notifications from the group within 10 seconds.
 \paragraph{References:} UC \ref{UC-add-member}
 
 \subsubsection{Remove Member} \label{FR-remove-member}
 \paragraph{Summary:}
-Once the user has been removed from the group, the user must not receive any messages from the group.
+Once the user has been removed from the group, the user should not receive any messages from the group.
 \paragraph{Rationale:}
 Users will be removed at different times to other users therefore it must be guaranteed that the user who is removed does not receive any messages from the group to ensure that the user is not a part of the group.
 \paragraph{Requirements:}
@@ -393,7 +359,7 @@ Once a user is removed, the user shall not receive messages or notifications fro
 \paragraph{References:} UC \ref{UC-send-voice}
 
 \subsubsection{Decryption of Received Message} \label{FR-decrypt-received-message}
-\paragraph{Summary:} Decryption of received messages is required before display and further processing.
+\paragraph{Summary:} The received message shall be decrypted before further processing and display.
 \paragraph{Rationale:} Group administrators can enable encryption for all messages sent on the group. These messages are encrypted before being sent and should be decrypted after received.
 \paragraph{Requirements:} When encryption is enabled, the send message feature shall use the AES265 encryption algorithm to encrypt the message before broadcasting it to the group members. In this case, the AES265 algorithm will also be used to decrypt the message once received by members subscribed to the group, given that encryption for messages sent on the group is enabled.
 %\begin{figure}[H]
@@ -404,13 +370,11 @@ Once a user is removed, the user shall not receive messages or notifications fro
 %\end{figure}
 \paragraph{References:} UC \ref{UC-delete-group}
 
-\subsubsection{Nice to Have Requirements}	\label{FR-nice-to-have}
+\subsubsection{Other Functional Requirements}	\label{FR-nice-to-have}
 Some requirements which might be additionally implemented, but which are not required for product functionality.
-\begin{itemize}
-\item Message Received by group Indication
-\item Message Read by group member Indication
-\item Delete Message from group chat interface
-\end{itemize}
+\paragraph{Message Received Indication} It may be indicated that the whole group has received the message.
+\paragraph{Message Read Indication} It may be indicated that a message has been read by the group.
+\paragraph{Deletion of Messages} A user may be allowed to delete messages from the group chat. This deletion will be local  and will not be propagated across all member devices.
 
 \subsection{Non-Functional Requirements}
 
